@@ -1,0 +1,5 @@
+//adicionar modulos node:
+npm i ts-node-dev --save-dev
+
+//iniciar projeto npm:
+npm start
