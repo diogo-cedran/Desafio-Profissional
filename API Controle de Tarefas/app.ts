@@ -19,10 +19,8 @@ class App {
   private async database() {
     try {
       mongoose.set("strictQuery", true);
-      await mongoose.connect(
-        "mongodb://0.0.0.0:27017/esoft5s-gerenciador-tarefas"
-      );
-      console.log("Connect database success");
+      await mongoose.connect("mongodb://0.0.0.0:27017/api-controle-de-tarefas");
+      console.log("Database Connect: SUCCESFULL");
     } catch (error) {
       console.error("Cannot connect to database, error:", error);
     }

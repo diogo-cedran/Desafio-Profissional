@@ -1,11 +1,8 @@
 import categoriaModel from "./categoria.schema";
 
-export class CategoriaService {
-  static update: any;
-  static delete: any;
-
-  async create(categoria: any) {
-    return await categoriaModel.create(categoria);
+class CategoriaService {
+  async create(categoriaJson: JSON) {
+    return await categoriaModel.create(categoriaJson);
   }
 
   async findById(id: any) {
@@ -16,12 +13,16 @@ export class CategoriaService {
     return await categoriaModel.find();
   }
 
-  async update(id: any, categoria: any) {
-    return await categoriaModel.findByIdAndUpdate(id, categoria);
+  async update(id: any, categoriaJson: JSON) {
+    return await categoriaModel.findByIdAndUpdate(id, categoriaJson);
   }
 
   async delete(id: any) {
     return await categoriaModel.findByIdAndDelete(id);
+  }
+
+  async findCustomID(ID: any) {
+    return await categoriaModel.findOne({ categoriaID: ID });
   }
 }
 

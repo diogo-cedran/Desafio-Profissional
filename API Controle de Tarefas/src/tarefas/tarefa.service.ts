@@ -1,11 +1,8 @@
 import tarefaModel from "./tarefa.schema";
 
-export class TarefaService {
-  static update: any;
-  static delete: any;
-
-  async create(tarefa: any) {
-    return await tarefaModel.create(tarefa);
+class TarefaService {
+  async create(tarefaJson: JSON) {
+    return await tarefaModel.create(tarefaJson);
   }
 
   async findById(id: any) {
@@ -16,12 +13,28 @@ export class TarefaService {
     return await tarefaModel.find();
   }
 
-  async update(id: any, tarefa: any) {
-    return await tarefaModel.findByIdAndUpdate(id, tarefa);
+  async update(id: any, tarefaJson: JSON) {
+    return await tarefaModel.findByIdAndUpdate(id, tarefaJson);
   }
 
   async delete(id: any) {
     return await tarefaModel.findByIdAndDelete(id);
+  }
+
+  async findCustomId(ID: any) {
+    return await tarefaModel.findOne({ tarefaID: ID });
+  }
+
+  async findUsuarioId(userID: any) {
+    return await tarefaModel.find({ usuarioID: userID });
+  }
+
+  async findConcluidas() {
+    return await tarefaModel.find({ status: "concluida" });
+  }
+
+  async findPendentes() {
+    return await tarefaModel.find({ status: "pendente" });
   }
 }
 

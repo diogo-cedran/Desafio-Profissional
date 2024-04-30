@@ -1,11 +1,8 @@
 import usuarioModel from "./usuario.schema";
 
-export class UsuarioService {
-  static update: any;
-  static delete: any;
-
-  async create(usuario: any) {
-    return await usuarioModel.create(usuario);
+class UsuarioService {
+  async create(usuarioJson: JSON) {
+    return await usuarioModel.create(usuarioJson);
   }
 
   async findById(id: any) {
@@ -16,12 +13,20 @@ export class UsuarioService {
     return await usuarioModel.find();
   }
 
-  async update(id: any, usuario: any) {
-    return await usuarioModel.findByIdAndUpdate(id, usuario);
+  async update(id: any, usuarioJson: JSON) {
+    return await usuarioModel.findByIdAndUpdate(id, usuarioJson);
   }
 
   async delete(id: any) {
     return await usuarioModel.findByIdAndDelete(id);
+  }
+
+  async findLogin(user: String) {
+    return await usuarioModel.findOne({ username: user });
+  }
+
+  async findCustomId(ID: any) {
+    return await usuarioModel.findOne({ usuarioID: ID });
   }
 }
 
